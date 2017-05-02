@@ -7,8 +7,8 @@ import java.security.SecureRandom;
  */
 public class ImgurScan {
 
-    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static SecureRandom rnd = new SecureRandom();
+    static private final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static private SecureRandom rnd = new SecureRandom();
 
     public static void main(String[] args) {
         while (true) {
@@ -19,7 +19,7 @@ public class ImgurScan {
                 String title = titleGet.getPageTitle("http://imgur.com/a/" + ran);
 
                 if(title != "imgur: the simple 404 page" && realCheck.check("http://imgur.com/a/" + ran)){
-                    System.out.println("Found! " + ran);
+                    System.out.println("Found! Check http://imgur.com/a/" + ran);
                 }
 
             }catch (Exception e){
@@ -28,7 +28,7 @@ public class ImgurScan {
         }
     }
 
-    public static String randomString() {
+    private static String randomString() {
 
         int len = 5;
 
