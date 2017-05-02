@@ -18,7 +18,7 @@ public class ImgurScan {
 
                 String title = titleGet.getPageTitle("http://imgur.com/a/" + ran);
 
-                if(title != "imgur: the simple 404 page"){
+                if(title != "imgur: the simple 404 page" && realCheck.check("http://imgur.com/a/" + ran)){
                     System.out.println("Found! " + ran);
                 }
 
