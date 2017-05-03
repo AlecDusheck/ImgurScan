@@ -6,9 +6,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-/**
- * Created by Alec Dusheck on 5/2/2017.
- */
 public class realCheck {
     public static Boolean check(String url) throws IOException{
         URL yahoo = new URL(url);
@@ -21,10 +18,9 @@ public class realCheck {
             a.append(inputLine);
         in.close();
 
-        if(a.toString().contains("contentURL")){
+        if(a.toString().contains("contentURL"))
             return true;
-        }else{
+        else
             return false;
-        }
     }
 }

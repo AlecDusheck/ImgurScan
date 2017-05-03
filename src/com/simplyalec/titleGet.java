@@ -11,18 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class titleGet {
-    /* the CASE_INSENSITIVE flag accounts for
-     * sites that use uppercase title tags.
-     * the DOTALL flag accounts for sites that have
-     * line feeds in the title text */
+
     private static final Pattern TITLE_TAG =
             Pattern.compile("\\<title>(.*)\\</title>", Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
 
-    /**
-     * @param url the HTML page
-     * @return title text (null if document isn't HTML or lacks a title tag)
-     * @throws IOException
-     */
     public static String getPageTitle(String url) throws IOException {
         URL u = new URL(url);
         URLConnection conn = u.openConnection();
@@ -64,12 +56,6 @@ public class titleGet {
         }
     }
 
-    /**
-     * Loops through response headers until Content-Type is found.
-     * @param conn
-     * @return ContentType object representing the value of
-     * the Content-Type header
-     */
     private static ContentType getContentTypeHeader(URLConnection conn) {
         int i = 0;
         boolean moreHeaders = true;
@@ -94,9 +80,6 @@ public class titleGet {
             return null;
     }
 
-    /**
-     * Class holds the content type and charset (if present)
-     */
     private static final class ContentType {
         private static final Pattern CHARSET_HEADER = Pattern.compile("charset=([-_a-zA-Z0-9]+)", Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
 
